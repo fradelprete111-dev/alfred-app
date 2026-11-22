@@ -1,5 +1,5 @@
 // App shell: stale-while-revalidate. Data: network first, cached copy when offline.
-const CACHE = "alfred-v5";
+const CACHE = "alfred-v6";
 self.addEventListener("install", (e) => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "./index.html"]))); });
 self.addEventListener("activate", (e) => {
   e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
